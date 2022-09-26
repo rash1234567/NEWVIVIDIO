@@ -8,7 +8,7 @@ const tv_image =" https://api.themoviedb.org/3/tv/{tv_id}/images?api_key=0eaae21
 
 const new_release = "https://api.themoviedb.org/3/discover/movie?api_key=0eaae2146624836f2825bc2d4154ad6e&primary_release_date.gte=2022-08-15&primary_release_date.lte=2022-09-01";
 
-const search = "https://api.themoviedb.org/3/search/{keyword}?api_key=0eaae2146624836f2825bc2d4154ad6e&query=spider&page=1";
+const search = "https://api.themoviedb.org/3/search/movie?api_key=0eaae2146624836f2825bc2d4154ad6e&query=nameOfMovie&page=1";
 
 const popular_kids =  "https://api.themoviedb.org/3/discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc";
 

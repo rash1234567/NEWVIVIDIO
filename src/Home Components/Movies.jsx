@@ -3,6 +3,7 @@ import { useState,useEffect} from 'react';
 import MovieCard from '../components/MovieCard';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import Search from '../components/search';
 
 
 const API_IMG = "https://image.tmdb.org/t/p/w500";
@@ -12,24 +13,40 @@ function Movies() {
   const new_release = "https://api.themoviedb.org/3/discover/movie?api_key=0eaae2146624836f2825bc2d4154ad6e&primary_release_date.gte=2022-08-15&primary_release_date.lte=2022-09-01";
   const [movieList,setMovieList] = useState([]);
   const [newmovieList,setNewmovieList] = useState([]);
+  const [input, setInput] = useState('');
 
 
   useEffect(
-  ()=>{
-     fetch(new_release)
-     .then((res)=> res.json())
-     .then((data)=>{setNewmovieList(data.results)
-        console.log(data.results)})
-    .catch((Error)=> console.log(Error));
-   },[] );
+      ()=>{
+        fetch(new_release)
+        .then((res)=> res.json())
+        .then((data)=>{setNewmovieList(data.results)
+            console.log(data.results)})
+        .catch((Error)=> console.log(Error));
+      },[]);
+
   useEffect(
-  ()=>{
-     fetch(url)
-     .then((res)=> res.json())
-     .then((data)=>{setMovieList(data.results)
-        console.log(data.results)})
-    .catch((Error)=> console.log(Error));
-   },[] )
+      ()=>{
+        fetch(url)
+        .then((res)=> res.json())
+        .then((data)=>{setMovieList(data.results)
+            console.log(data.results)})
+        .catch((Error)=> console.log(Error));
+      },[] )
+
+   const handleChange = (e) => {
+        const searchValue = e.target.value;
+        setInput(searchValue);
+        async function fetchData () {
+        const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=0eaae2146624836f2825bc2d4154ad6e&query=${searchValue}&page=1`)
+              .then((res)=> res.json())
+              .then((data)=>{ 
+                setMovieList(data.results);
+                console.log(data.results)})
+        };
+      fetchData();
+      }
+
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -50,52 +67,53 @@ function Movies() {
 
   return (
     <div>
+     <Search value={input} onChange={handleChange} />
      <Carousel
-  swipeable={true}
-  draggable={true}
-  showDots={false}
-  responsive={responsive}
-  ssr={true} // means to render carousel on server-side.
-  infinite={true}
-  //autoPlay={this.props.deviceType !== "mobile" ? true : false}
-  //autoPlaySpeed={1000}
-  keyBoardControl={true}
-  customTransition="all .5"
-  transitionDuration={500}
-  containerClass="carousel-container"
-  removeArrowOnDeviceType={["tablet", "mobile"]}
- // deviceType={this.props.deviceType}
-  dotListClass="custom-dot-list-style"
-  itemClass="carousel-item-padding-40-px"
-  style={{ width: '90%'}}
->
+       swipeable={true}
+       draggable={true}
+       showDots={false}
+       responsive={responsive}
+       ssr={true} // means to render carousel on server-side.
+       infinite={true}
+       //autoPlay={this.props.deviceType !== "mobile" ? true : false}
+       //autoPlaySpeed={1000}
+       keyBoardControl={true}
+       customTransition="all .5"
+       transitionDuration={500}
+       containerClass="carousel-container"
+       removeArrowOnDeviceType={["tablet", "mobile"]}
+       // deviceType={this.props.deviceType}
+       dotListClass="custom-dot-list-style"
+       itemClass="carousel-item-padding-40-px"
+      style={{ width: '90%'}}
+      >
       { movieList.map((movieReq)=>{
          return <MovieCard key={movieReq.id} {...movieReq}/>
       })}
     </Carousel>
     <h3 style={{textAlign:'left',marginLeft:'5px'}}>New Release</h3>
      <Carousel
-  swipeable={true}
-  draggable={true}
-  showDots={false}
-  responsive={responsive}
-  ssr={true} // means to render carousel on server-side.
-  infinite={true}
-  //autoPlay={this.props.deviceType !== "mobile" ? true : false}
-  //autoPlaySpeed={1000}
-  keyBoardControl={true}
-  customTransition="all .5"
-  transitionDuration={500}
-  containerClass="carousel-container"
-  removeArrowOnDeviceType={["tablet", "mobile"]}
- // deviceType={this.props.deviceType}
-  dotListClass="custom-dot-list-style"
-  itemClass="carousel-item-padding-40-px"
-  style={{ width: '90%'}}
->
-      { newmovieList.map((movieReq)=>{
-         return <MovieCard key={movieReq.id} {...movieReq}/>
-      })}
+          swipeable={true}
+          draggable={true}
+          showDots={false}
+          responsive={responsive}
+          ssr={true} // means to render carousel on server-side.
+          infinite={true}
+          //autoPlay={this.props.deviceType !== "mobile" ? true : false}
+          //autoPlaySpeed={1000}
+          keyBoardControl={true}
+          customTransition="all .5"
+          transitionDuration={500}
+          containerClass="carousel-container"
+          removeArrowOnDeviceType={["tablet", "mobile"]}
+        // deviceType={this.props.deviceType}
+          dotListClass="custom-dot-list-style"
+          itemClass="carousel-item-padding-40-px"
+          style={{ width: '90%'}}
+        >
+        { newmovieList.map((movieReq)=>{
+          return <MovieCard key={movieReq.id} {...movieReq}/>
+        })}
     </Carousel>
   </div>
   )
