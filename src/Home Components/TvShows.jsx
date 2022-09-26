@@ -7,10 +7,10 @@ import Search from '../components/search';
 
 
 const API_IMG = "https://image.tmdb.org/t/p/w500";
+const tv_series_trending_url = "https://api.themoviedb.org/3/trending/tv/day?api_key=0eaae2146624836f2825bc2d4154ad6e";
+const new_release = "https://api.themoviedb.org/3/discover/movie?api_key=0eaae2146624836f2825bc2d4154ad6e&primary_release_date.gte=2022-08-15&primary_release_date.lte=2022-09-01";
 
 function Movies() {
-  const tv_series_trending_url = "https://api.themoviedb.org/3/trending/tv/day?api_key=0eaae2146624836f2825bc2d4154ad6e";
-  const new_release = "https://api.themoviedb.org/3/discover/movie?api_key=0eaae2146624836f2825bc2d4154ad6e&primary_release_date.gte=2022-08-15&primary_release_date.lte=2022-09-01";
   const [movieList,setMovieList] = useState([]);
   const [newmovieList,setNewmovieList] = useState([]);
   const [input, setInput] = useState('');
@@ -33,18 +33,18 @@ function Movies() {
         .catch((Error)=> console.log(Error));
       },[] )
 
-   const handleChange = (e) => {
-        const searchValue = e.target.value;
-        setInput(searchValue);
+      const handleSubmit = (e) =>{
+        e.preventDefault();
         async function fetchData () {
-        const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=0eaae2146624836f2825bc2d4154ad6e&query=${searchValue}&page=1`)
-              .then((res)=> res.json())
-              .then((data)=>{ 
-                setMovieList(data.results);
-                console.log(data.results)})
-        };
-      fetchData();
-    }
+           const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=0eaae2146624836f2825bc2d4154ad6e&query=${input}&page=2`)
+          .then((res)=> res.json())
+          .then((data)=>{ 
+          setMovieList(data.results);
+          console.log(data.results)})
+          };
+          fetchData();
+          setInput('')
+       };
 
   const responsive = {
     desktop: {
@@ -65,8 +65,11 @@ function Movies() {
   };
 
   return (
-    <div>
-      <Search value={input} onChange={handleChange} />
+    <div style={{backgroundColor:'#120241'}}>
+      <div className="head w-100 d-flex justify-content-between mt-2">
+        <h3 style={{textAlign:'left',marginLeft:'5px'}}>Trending Now</h3>
+        <Search onSubmit={handleSubmit} onChange={(e)=>{setInput(e.target.value)}}  value={input} />
+      </div>
      <Carousel
         swipeable={true}
         draggable={true}

@@ -2,24 +2,25 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import Search from './search';
 
 function TopNav() {
 
   return (
-    <Navbar bg="dark" variant="dark" expand="lg">
+    <Navbar expand="lg" style={{background: "#120241"}}> 
       <Container fluid>
-        <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse id="navbarScroll">
+        <div className="logo d-flex" style={{ marginLeft:'10px',fontSize:'30px' }}>
+          <i class="fa-solid fa-v" style={{ color:'white' }}></i>
+          <i class="fa-solid fa-video" style={{ color:'white' }}></i>
+        </div>
+        <Navbar.Toggle aria-controls="navbarScroll" style={{backgroundColor:"white"}} />
+        <Navbar.Collapse style={{maxHeight: '100vh'}} >
           <Nav
-            className="ms-auto "
-            style={{ maxHeight: '80vh' }}
-        >
-            <Nav.Link href="/Home/Home/TvShows">Home</Nav.Link>
-            <Nav.Link href="/Profile">Profile</Nav.Link>
-            <Nav.Link href="/WatchList">Watch List</Nav.Link>
-            <Nav.Link href="/Blog">Blog</Nav.Link>
-            <Nav.Link href="/Signout">Sign out</Nav.Link>   
+            className="ms-auto nav-collapse">
+            <Nav.Link href="/Home/Home/TvShows" style={{color:"white", alignSelf:'center'}}>Home</Nav.Link>
+            <Nav.Link href="/Profile" style={{color:"white", alignSelf:'center' }}>Profile</Nav.Link>
+            <Nav.Link href="/WatchList" style={{color:"white", alignSelf:'center' }}>Watch List</Nav.Link>
+            <Nav.Link href="/Blog" style={{color:"white", alignSelf:'center' }} >Blog</Nav.Link>
+            <Nav.Link href="/Signout" style={{color:"white", alignSelf:'center' }}>Sign out</Nav.Link>   
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -34,18 +34,18 @@ function Movies() {
         .catch((Error)=> console.log(Error));
       },[] )
 
-   const handleChange = (e) => {
-        const searchValue = e.target.value;
-        setInput(searchValue);
-        async function fetchData () {
-        const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=0eaae2146624836f2825bc2d4154ad6e&query=${searchValue}&page=1`)
-              .then((res)=> res.json())
-              .then((data)=>{ 
-                setMovieList(data.results);
-                console.log(data.results)})
+    const handleSubmit = (e) =>{
+      e.preventDefault();
+      async function fetchData () {
+         const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=0eaae2146624836f2825bc2d4154ad6e&query=${input}&page=2`)
+        .then((res)=> res.json())
+        .then((data)=>{ 
+        setMovieList(data.results);
+        console.log(data.results)})
         };
-      fetchData();
-      }
+        fetchData();
+        setInput('')
+     };
 
   const responsive = {
         desktop: {
@@ -66,8 +66,11 @@ function Movies() {
       };
 
   return (
-    <div>
-     <Search value={input} onChange={handleChange} />
+    <div style={{backgroundColor:'#120241'}}>
+      <div className="head w-100 d-flex justify-content-between mt-2">
+        <h3 style={{textAlign:'left',marginLeft:'5px'}}>Trending Now</h3>
+        <Search onSubmit={handleSubmit} onChange={(e)=>{setInput(e.target.value)}}  value={input} />
+      </div>
      <Carousel
         swipeable={true}
         draggable={true}
@@ -115,8 +118,7 @@ function Movies() {
          return <MovieCard key={movieReq.id} {...movieReq}/>
       })}
     </Carousel>
-  </div>
-  )
+  </div>)
 }
 
-export default Movies
+export default Movies;

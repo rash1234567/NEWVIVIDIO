@@ -10,7 +10,6 @@ function Home() {
     <div>
       <MovieNav/>
       <SliderComp/>
-      <h3 style={{textAlign:'left',marginLeft:'5px'}}>Trending Now</h3>
     </div>  
     <Outlet/>
     </>

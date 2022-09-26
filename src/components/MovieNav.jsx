@@ -6,12 +6,13 @@ import {  Link } from 'react-router-dom';
 function MovieNav() {
   return (
     <>
-    <Navbar bg="dark" variant="dark" style={{height:'50px'}}>
+    <Navbar variant="dark" style={{height:'50px',background: "#120241"
+}}>
       <Container>
-        <Nav >
-          <Link to="Home/TvShows">Tv Shows</Link>
-          <Link to="Home/Movies">Movies</Link>
-          <Link to="Home/Anime">Anime</Link>
+        <Nav style={{color:"white",width:'70%',display:'flex',justifyContent:'space-around' }}>
+          <Link to="Home/TvShows" style={{color:"white",textDecoration:'none' }}>Tv Shows</Link>
+          <Link to="Home/Movies" style={{color:"white",textDecoration:'none' }}>Movies</Link>
+          <Link to="Home/Anime" style={{color:"white",textDecoration:'none' }}>Anime</Link>
         </Nav>
       </Container>
     </Navbar>

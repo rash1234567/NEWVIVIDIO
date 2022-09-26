@@ -15,7 +15,7 @@ function SliderComp() {
   }, [])
 
   return (<>
-    <Carousel>
+    <Carousel style={{backgroundColor:'#120241'}}>
       {
         slides.map((slide)=>{
           return <Carousel.Item key={slide.id}>

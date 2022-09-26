@@ -1,5 +1,11 @@
+*{
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .formbody {
-    background-color: Black;
+    background-color: #120241;
+    ;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -26,6 +32,19 @@
     height: 38px !important;
   }
   
-  a{
+  link{
     text-decoration: none;
   }
+
+  h3{
+    color: white;
+    background-color: none;}
+
+  p{
+    background-color: none;
+  }
+  /* @media only screen and (max-width:'600px'){
+    .nav-collapse{
+      height: '80vh',color:"white",display:'flex',alignItems:'center',justifyContent:'space-between',padding:'100px 0'
+    }
+  } */
