@@ -7,7 +7,7 @@ function Home() {
  
   return (
     <>
-    <div>
+    <div >
       <MovieNav/>
       <SliderComp/>
     </div>  
