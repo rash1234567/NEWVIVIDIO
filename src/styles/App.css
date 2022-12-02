@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.carousel{
+    background-image: url('https://image.tmdb.org/t/p/w500/ulgKdif3ubMACDltr8VZy6fyVjW.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
