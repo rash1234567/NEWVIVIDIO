@@ -1,14 +1,40 @@
-import './styles/App.css';
-import Signup from "./components/Signup";
-import Login from "./components/Login";
 import React from "react";
-import SideNav from './components/SideNav';
+import "./styles/App.css"
+import {Routes,Route} from 'react-router-dom';
+import Home from './Pages/Home';
+import Profile from './Pages/Profile';
+import WatchList from './Pages/WatchList';
+import SideNav from "./components/SideNav";
+import RightNav from "./components/RightNav";
 
 function App() {
-  return (
-    <>
-      <SideNav/>
-    </>
+  return (<div className="flex flex-row justify-between">
+    <SideNav/>
+          <Routes>
+            <Route
+                path="/"
+                element={
+                    <Home/>
+                 
+                }
+              />
+            <Route
+                path="/Profile"
+                element={
+                    <Profile/>
+                 
+                }
+              />
+            <Route
+                path="/WatchList"
+                element={
+                    <WatchList/>
+                 
+                }
+              />
+          </Routes>
+          <RightNav/>
+    </div>
   );
 }
 
