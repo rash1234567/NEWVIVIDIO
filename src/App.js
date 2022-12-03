@@ -18,20 +18,6 @@ function App() {
                  
                 }
               />
-            <Route
-                path="/Profile"
-                element={
-                    <Profile/>
-                 
-                }
-              />
-            <Route
-                path="/WatchList"
-                element={
-                    <WatchList/>
-                 
-                }
-              />
           </Routes>
           <RightNav/>
     </div>
