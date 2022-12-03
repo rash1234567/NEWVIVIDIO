@@ -1,5 +1,4 @@
 import React from 'react';
-import image from '../Images/homeImgOne.png';
 
 function MovieCard() {
   return (

@@ -9,3 +9,12 @@
     background-size: cover;
     background-position: center;
 }
+
+
+
+.carousel2{
+    background-image: url('https://image.tmdb.org/t/p/w500/tUBN1paMQ1tmVA5Sjy1ZjPWVsiF.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}

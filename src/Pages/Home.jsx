@@ -1,18 +1,20 @@
 import { useState } from "react"
 import React from 'react'
 import { useEffect } from "react";
+import CarouselC from "../components/Carousel";
 
 function Home() {
     const [topRated,setTopRated] = useState([]);
 
   return (
-    <div className='w-[60%]'>
-        <div className="nav h-[7%] bg-[#171029] w-full text-white">
+    <div className='w-[60%] bg-[#171029] text-white'>
+        <div className="nav h-[7%] w-full text-white">
             <button className='ml-4'>Home</button>
             <button className='ml-4'>Tv Shows</button>
             <button className='ml-4'>Movies</button>
         </div>
-        <div className='px-3'>
+        <CarouselC/>
+        <div className='px-3 mt-4'>
             <h6>Trending Movies <i class="fa-solid fa-fire"></i></h6>
         </div>
         <div className='px-3'>
