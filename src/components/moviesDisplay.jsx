@@ -3,6 +3,8 @@ import "react-multi-carousel/lib/styles.css";
 import axios from "axios"
 import React,{useEffect,useState} from 'react';
 import TopRated from "../cards/TopRated";
+import { useUserAuth } from '../utilities/UserAuthContextProvider';
+
 
 const responsive = {
     desktop: {
@@ -22,11 +24,8 @@ const responsive = {
     }
   };
 function MoviesDisplay() {
-    const [topRated,setTopRated] = useState([])
-    useEffect(() => {
-      axios.get('https://api.themoviedb.org/3/movie/top_rated?api_key=0eaae2146624836f2825bc2d4154ad6e&language=en-US&page=3').then(res=> setTopRated(res.data.results))
-    }, [])
     
+  const {search} = useUserAuth();
   return (
     <Carousel
         swipeable={true}
@@ -46,7 +45,7 @@ function MoviesDisplay() {
         itemClass="carousel-item-padding-40-px"
         >
         {
-            topRated.map(movies=>{
+            search.map(movies=>{
                 return <TopRated {...movies} key={movies.id}/>
             })
         }

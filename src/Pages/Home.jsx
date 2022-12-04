@@ -11,15 +11,15 @@ function Home() {
             <button className='ml-4'>Movies</button>
         </div>
         <div className=' mt-4'>
-            <h6>Trending Movies <i class="fa-solid fa-fire"></i></h6>
+            <h6>Trending Movies <i className="fa-solid fa-fire"></i></h6>
             <CarouselC/>
         </div>
         <div className=' mt-4'>
-            <h6>Top Rated <i class="fa-regular fa-star text-yellow-500 "></i></h6>
+            <h6>Top Rated <i className="fa-regular fa-star text-yellow-500 "></i></h6>
             <MoviesDisplay/>
         </div>
         <div className=' mt-4'>
-            <h6>Continue Watching... <i class="fa-regular fa-star text-yellow-500 "></i></h6>
+            <h6>Continue Watching... <i className="fa-regular fa-star text-yellow-500 "></i></h6>
         </div>
     </div>
   )

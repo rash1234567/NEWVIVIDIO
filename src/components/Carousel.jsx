@@ -1,7 +1,9 @@
 import React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import CarouselCard from "../cards/CarouselCard"
+import CarouselCard from "../cards/CarouselCard";
+import { useState, useEffect } from 'react';
+
 
 const responsive = {
     desktop: {
@@ -21,7 +23,18 @@ const responsive = {
     }
   };
 
+
 function CarouselC() {
+  const url = "https://api.themoviedb.org/3/trending/movie/day?api_key=0eaae2146624836f2825bc2d4154ad6e";
+  const [movieList, setMovieList] = useState([])
+
+  useEffect(() => {
+    fetch(url)
+    .then(res => res.json())
+    .then(data => {setMovieList(data.results)
+                    })
+  }, [])
+  
   return (
     <Carousel
         swipeable={true}
@@ -42,8 +55,11 @@ function CarouselC() {
         itemClass="carousel-item-padding-10-px"
         style={{ width: '100%'}}
       >
-       <CarouselCard />
-       <CarouselCard />
+        {
+          movieList.map((movie) => {
+           return  <CarouselCard key={movie.id} {...movie} />
+          })
+        }
     </Carousel>
   )
 }

@@ -14,7 +14,7 @@ function RightNav() {
   return(
     <>
     <div className='bg-[#171029] w-[20vw] h-[100vh] flex flex-col p-2 overflow-y-scroll '>
-        <i class="fa-regular fa-bell text-white self-end mr-2 text-lg"></i>
+        <i className="fa-regular fa-bell text-white self-end mr-2 text-lg"></i>
         <h5 className='text-white mt-3'>Upcoming Movies</h5>
         {
             upcoming.map(movie=>{
