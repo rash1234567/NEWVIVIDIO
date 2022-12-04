@@ -3,6 +3,7 @@ import "react-multi-carousel/lib/styles.css";
 import axios from "axios"
 import React,{useEffect,useState} from 'react';
 import TopRated from "../cards/TopRated";
+import { useUserAuth } from '../utilities/UserAuthContextProvider';
 import ModalView from '../components/ModalView';
 
    
@@ -25,12 +26,12 @@ const responsive = {
   };
   const API_IMG = "https://image.tmdb.org/t/p/w500";
 function MoviesDisplay() {
-    const [topRated,setTopRated] = useState([]);
+    const {search} = useUserAuth();
     const [showModal, setShowModal] = useState(false);
     const [activeMovie,setActiveMovie] = useState({})
 
     const showDetails = (id) =>{
-      let movie = topRated.find(movie=> movie.id === id );
+      let movie = search.find(movie=> movie.id === id );
       setActiveMovie(movie)
       console.log(activeMovie);
       console.log(movie);
@@ -40,11 +41,6 @@ function MoviesDisplay() {
       setShowModal(false)
       setActiveMovie({})
     }
-
-    useEffect(() => {
-      axios.get('https://api.themoviedb.org/3/movie/top_rated?api_key=0eaae2146624836f2825bc2d4154ad6e&language=en-US&page=3').then(res=> setTopRated(res.data.results))
-    }, [])
-    
   return (
     <>
     <Carousel
@@ -65,8 +61,9 @@ function MoviesDisplay() {
         itemClass="carousel-item-padding-40-px"
         >
         {
-            topRated.map(movies=>{
-                return <TopRated {...movies} key={movies.id} showDetails={showDetails}/>
+            search.map(movies=>{
+                return <TopRated {...movies} key={movies.id}/>
+
             })
         }
     </Carousel>
