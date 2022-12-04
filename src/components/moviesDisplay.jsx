@@ -4,8 +4,9 @@ import axios from "axios"
 import React,{useEffect,useState} from 'react';
 import TopRated from "../cards/TopRated";
 import { useUserAuth } from '../utilities/UserAuthContextProvider';
+import ModalView from '../components/ModalView';
 
-
+   
 const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -23,10 +24,25 @@ const responsive = {
       slidesToSlide: 1 // optional, default to 1.
     }
   };
+  const API_IMG = "https://image.tmdb.org/t/p/w500";
 function MoviesDisplay() {
-    
-  const {search} = useUserAuth();
+    const {search} = useUserAuth();
+    const [showModal, setShowModal] = useState(false);
+    const [activeMovie,setActiveMovie] = useState({})
+
+    const showDetails = (id) =>{
+      let movie = search.find(movie=> movie.id === id );
+      setActiveMovie(movie)
+      console.log(activeMovie);
+      console.log(movie);
+      setShowModal(true)
+    }
+    const closeModal=()=>{
+      setShowModal(false)
+      setActiveMovie({})
+    }
   return (
+    <>
     <Carousel
         swipeable={true}
         draggable={false}
@@ -47,10 +63,12 @@ function MoviesDisplay() {
         {
             search.map(movies=>{
                 return <TopRated {...movies} key={movies.id}/>
+
             })
         }
     </Carousel>
+    <ModalView  showModal={showModal} setShowModal={setShowModal} closeModal={closeModal} overview={activeMovie.overview} img={API_IMG+activeMovie.poster_path} title={activeMovie.title}/>
+    </>
   )
 }
-
 export default MoviesDisplay

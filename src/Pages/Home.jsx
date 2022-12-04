@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import MoviesDisplay from "../components/moviesDisplay";
 import CarouselC from '../components/Carousel';
 
@@ -21,6 +21,7 @@ function Home() {
         <div className=' mt-4'>
             <h6>Continue Watching... <i className="fa-regular fa-star text-yellow-500 "></i></h6>
         </div>
+        
     </div>
   )
 }
