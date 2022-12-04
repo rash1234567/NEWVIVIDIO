@@ -2,10 +2,11 @@ import React from 'react'
 
 function CarouselCard() {
   return (
-    <div className='carousel w-[80%] h-[50vh] p-12 flex justify-around mt-10 mx-auto rounded-[30px]'>
+    <div className='carousel w-[90%] h-[50vh] p-12 flex justify-around mt-2 rounded-[30px]'>
         <div className='carouselItem flex justify-around w-full h-full'>
           <div className='w-[30%] h-full'>
               <img src="https://image.tmdb.org/t/p/w500/ulgKdif3ubMACDltr8VZy6fyVjW.jpg" className=' w-full h-full rounded-[30px]'/>
+
           </div>
           <div className='text-white ml-8 w-96 flex flex-col'>
               <h1 className='text-2xl'>Lorem ipsum dolor sit.</h1>
