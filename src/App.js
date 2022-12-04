@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles/App.css"
-import {Routes,Route} from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
 import Home from './Pages/Home';
 import Profile from './Pages/Profile';
 import WatchList from './Pages/WatchList';
@@ -15,7 +15,7 @@ function App() {
                 path="/"
                 element={
                     <Home/>
-                 
+       
                 }
               />
           </Routes>

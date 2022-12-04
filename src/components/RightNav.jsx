@@ -1,7 +1,8 @@
-import axios from 'axios'
+import  axios  from 'axios';
 import React,{useEffect} from 'react'
 import { useState } from 'react'
-import Upcoming from '../cards/Upcoming'
+import Upcoming from '../cards/Upcoming';
+
 
 function RightNav() {
     const [upcoming,setUpcoming] = useState([])
