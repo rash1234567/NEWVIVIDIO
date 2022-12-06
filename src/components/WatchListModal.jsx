@@ -1,7 +1,7 @@
 import React from "react";
 import { useUserAuth } from "../utilities/UserAuthContextProvider";
 
-export default function ModalView({showModal, setShowModal,closeModal,title,img,overview}) {
+export default function WatchListModalView({showModal, setShowModal,closeModal,title,img,overview, id}) {
 
  
   return (
@@ -40,9 +40,9 @@ export default function ModalView({showModal, setShowModal,closeModal,title,img,
                   <button
                     className=" text-[#171029] font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
-                    onClick={closeModal}
+                    onClick={() => closeModal(id)}
                   >
-                    Watch List
+                  Remove From Watch List
                   </button>
                 </div>
               </div>

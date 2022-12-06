@@ -37,7 +37,7 @@ function Login() {
   };
 
     return (
-      <div className= "w-[60%] h-full flex items-center" style={{backgroundImage:`url(${backgroundImage})`, backgroundRepeat:'no-repeat', backgroundSize:'cover', backgroundPosition:'center'}}>
+      <div className= "w-[60%] h-screen flex items-center" style={{backgroundImage:`url(${backgroundImage})`, backgroundRepeat:'no-repeat', backgroundSize:'cover', backgroundPosition:'center'}}>
       <div className="formbody w-1/2 mx-auto bg-white">
           <div className="p-4 box">
             <h2 className="mb-3">Login</h2>

@@ -13,7 +13,7 @@ function RightNav() {
     
   return(
     <>
-    <div className='bg-[#171029] w-[20vw] h-[100vh] flex flex-col p-2 overflow-y-scroll '>
+    <div className='bg-[#171029] home w-full lg:w-[20vw] h-[100vh] flex flex-col p-2 overflow-y-scroll '>
         <i className="fa-regular fa-bell text-white self-end mr-2 text-lg"></i>
         <h5 className='text-white mt-3'>Upcoming Movies</h5>
         {

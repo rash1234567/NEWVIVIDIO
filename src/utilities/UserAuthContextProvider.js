@@ -17,6 +17,8 @@ export function UserAuthContextProvider ({children}){
     const [user,setUser] = useState({});
     const [input, setInput] = useState('');
     const [search, setSearch] = useState([]);
+    const [watchList, setWatchList] = useState([]);
+
 
     useEffect(() => {
       axios.get('https://api.themoviedb.org/3/movie/top_rated?api_key=0eaae2146624836f2825bc2d4154ad6e&language=en-US&page=3').then(res=> setSearch(res.data.results))
@@ -63,7 +65,7 @@ export function UserAuthContextProvider ({children}){
     
 
     return( 
-    <userAuthContext.Provider value={{user, signUp, logIn, logOut, googleSignIn, handleSubmit, input, search, handleChange}}>
+    <userAuthContext.Provider value={{user, signUp, logIn, logOut, googleSignIn, handleSubmit, input, search, handleChange, watchList, setWatchList}}>
         {children}
     </userAuthContext.Provider>)
 }

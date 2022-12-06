@@ -8,18 +8,18 @@ import { useState, useEffect } from 'react';
 const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 1.2,
+      items: 1,
       slidesToSlide: 1 // optional, default to 1.
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
-      items: 3,
-      slidesToSlide: 3 // optional, default to 1.
+      items: 1,
+      slidesToSlide: 1 // optional, default to 1.
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
-      items: 3,
-      slidesToSlide: 3 // optional, default to 1.
+      items: 1,
+      slidesToSlide: 1 // optional, default to 1.
     }
   };
 
@@ -49,7 +49,7 @@ function CarouselC() {
         customTransition="all 0.2"
         transitionDuration={200}
         containerClass="carousel-container"
-        removeArrowOnDeviceType={["tablet", "mobile"]}
+        removeArrowOnDeviceType={[]}
       // deviceType={this.props.deviceType}
         dotListClass="custom-dot-list-style"
         itemClass="carousel-item-padding-10-px"
