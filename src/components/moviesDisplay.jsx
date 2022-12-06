@@ -32,7 +32,6 @@ function MoviesDisplay() {
     const showDetails = (id) =>{
       let movie = search.find(movie=> movie.id === id );
       setActiveMovie(movie)
-      console.log(activeMovie);
       console.log(movie);
       setShowModal(true)
     }
@@ -65,7 +64,7 @@ function MoviesDisplay() {
             })
         }
     </Carousel>
-    <ModalView  showModal={showModal} setShowModal={setShowModal} closeModal={closeModal} overview={activeMovie.overview} img={API_IMG+activeMovie.poster_path} title={activeMovie.title}/>
+    <ModalView  showModal={showModal} setShowModal={setShowModal} closeModal={closeModal} overview={activeMovie.overview} img={API_IMG+activeMovie.poster_path} title={activeMovie.title} id={activeMovie.id } name={activeMovie.name}/>
     </>
   )
 }

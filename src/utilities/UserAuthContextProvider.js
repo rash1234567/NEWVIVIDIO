@@ -10,8 +10,6 @@ import { createContext,useContext, useState , useEffect, useRef} from "react";
 import { auth } from "./firebaseSetup";
 import axios from "axios";
 
-
-
 const userAuthContext = createContext();
 const movieToprated = 'https://api.themoviedb.org/3/movie/top_rated?api_key=0eaae2146624836f2825bc2d4154ad6e&language=en-US&page=3';
 const tvShowsToprated = 'https://api.themoviedb.org/3/tv/top_rated?api_key=0eaae2146624836f2825bc2d4154ad6e&language=en-US&page=3';
@@ -46,7 +44,13 @@ export function UserAuthContextProvider ({children}){
 
     const findYoutubeId=(id)=>{
       axios.get(`https://api.themoviedb.org/3/${type}/${id}/videos?api_key=0eaae2146624836f2825bc2d4154ad6e&language=en-US`)
-      .then(res=>{ setMovieId(res.data.results[1].key)});
+      .then(res=>{ 
+        if (res.data.results.length > 1) {
+          return setMovieId( res.data.results[1].key)
+        }
+          setMovieId( res.data.results[0].key);
+          console.log(movieId);
+        });
       setIsComponentVisible(!isComponentVisible)
     }
 
@@ -77,8 +81,7 @@ export function UserAuthContextProvider ({children}){
           } catch (error) {
             
           }   
-        
-        console.log(data.results)})
+        setType('movie')})
         };
         fetchData();
      };

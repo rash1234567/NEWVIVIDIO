@@ -13,9 +13,10 @@ export default function Alert() {
             <div className="relative w-auto my-6 mx-auto max-w-sm">
               {/*content*/}
               <div className="border-0  rounded-lg shadow-lg relative flex flex-col w-full bg-red-800 outline-none focus:outline-none">
+                {/*header*/}
                 {/*body*/}
                 <div className="relative flex flex-row px-2">
-                  <p className="my-4 text-white text-lg leading-relaxed">
+                  <p className="my-4 text-white text-lg pl-4 leading-relaxed">
                     No movies found!
                   </p>
                   <button
