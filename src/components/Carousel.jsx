@@ -2,7 +2,7 @@ import React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import CarouselCard from "../cards/CarouselCard";
-import { useState, useEffect } from 'react';
+import { useUserAuth } from '../utilities/UserAuthContextProvider';
 
 
 const responsive = {
@@ -25,15 +25,8 @@ const responsive = {
 
 
 function CarouselC() {
-  const url = "https://api.themoviedb.org/3/trending/movie/day?api_key=0eaae2146624836f2825bc2d4154ad6e";
-  const [movieList, setMovieList] = useState([])
-
-  useEffect(() => {
-    fetch(url)
-    .then(res => res.json())
-    .then(data => {setMovieList(data.results)
-                    })
-  }, [])
+  const {movieList} = useUserAuth();
+  
   
   return (
     <Carousel
