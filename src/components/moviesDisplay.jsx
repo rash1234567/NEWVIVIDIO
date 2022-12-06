@@ -4,6 +4,7 @@ import React,{useState} from 'react';
 import TopRated from "../cards/TopRated";
 import { useUserAuth } from '../utilities/UserAuthContextProvider';
 import ModalView from '../components/ModalView';
+import { useNavigate } from "react-router-dom";
 
    
 const responsive = {
@@ -14,12 +15,12 @@ const responsive = {
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
-      items: 2,
+      items: 3,
       slidesToSlide: 2 // optional, default to 1.
     },
     mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
+      breakpoint: { max: 464, min: 300 },
+      items: 1.5,
       slidesToSlide: 1 // optional, default to 1.
     }
   };
@@ -27,18 +28,29 @@ const responsive = {
 function MoviesDisplay() {
     const {search} = useUserAuth();
     const [showModal, setShowModal] = useState(false);
-    const [activeMovie,setActiveMovie] = useState({})
+    const [activeMovie,setActiveMovie] = useState({});
+    const {watchList, setWatchList} = useUserAuth();
+    const navigate = useNavigate()
+    let movie
 
     const showDetails = (id) =>{
-      let movie = search.find(movie=> movie.id === id );
+      movie = search.find(movie=> movie.id === id );
       setActiveMovie(movie)
       console.log(movie);
       setShowModal(true)
     }
+
     const closeModal=()=>{
-      setShowModal(false)
-      setActiveMovie({})
+      setShowModal(false); 
+      if(watchList.includes(activeMovie)){
+        return
+      }
+      {
+        setWatchList(prev => [...prev, activeMovie]);
+        console.log(watchList)
+      }
     }
+
   return (
     <>
     <Carousel
@@ -54,7 +66,7 @@ function MoviesDisplay() {
         customTransition="all .5"
         transitionDuration={500}
         containerClass="carousel-container"
-        removeArrowOnDeviceType={["tablet", "mobile"]}
+        removeArrowOnDeviceType={[ "mobile"]}
         dotListClass="custom-dot-list-style"
         itemClass="carousel-item-padding-40-px"
         >
@@ -65,6 +77,7 @@ function MoviesDisplay() {
         }
     </Carousel>
     <ModalView  showModal={showModal} setShowModal={setShowModal} closeModal={closeModal} overview={activeMovie.overview} img={API_IMG+activeMovie.poster_path} title={activeMovie.title} id={activeMovie.id } name={activeMovie.name}/>
+
     </>
   )
 }

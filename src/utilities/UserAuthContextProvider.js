@@ -20,6 +20,7 @@ export function UserAuthContextProvider ({children}){
     const [user,setUser] = useState({});
     const [input, setInput] = useState('');
     const [search, setSearch] = useState([]);
+    const [watchList, setWatchList] = useState([]);
     const [topRatedAPI,setTopRatedAPI] = useState(tvShowsToprated);
     const [trendingAPI,setTrendingAPI] = useState(url_tv);
     const [movieList, setMovieList] = useState([]);
@@ -112,7 +113,7 @@ export function UserAuthContextProvider ({children}){
     
 
     return( 
-    <userAuthContext.Provider value={{user, signUp, logIn, logOut, googleSignIn, handleSubmit, input, search, handleChange,setTopRatedAPI,movieToprated,tvShowsToprated,fetchToprated,topRatedAPI,setTrendingAPI,url_movie,url_tv,movieList,movieId,findYoutubeId,ref, isComponentVisible, setIsComponentVisible,setType,showAlert,setShowAlert}}>
+    <userAuthContext.Provider value={{user, signUp, logIn, logOut, googleSignIn, handleSubmit, input, search, handleChange,setTopRatedAPI,movieToprated,tvShowsToprated,fetchToprated,topRatedAPI,setTrendingAPI,url_movie,url_tv,movieList,movieId,findYoutubeId,ref, isComponentVisible, setIsComponentVisible,setType,showAlert,setShowAlert, watchList, setWatchList}}>
         {children}
     </userAuthContext.Provider>)
 }

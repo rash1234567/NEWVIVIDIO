@@ -9,7 +9,8 @@ function Home() {
    const {setTopRatedAPI,movieToprated,tvShowsToprated,url_movie,url_tv,setTrendingAPI,setType} = useUserAuth();
 
   return (
-    <div className='w-[60%] h-[100vh] overflow-y-scroll overflow-x-hidden bg-[#000] text-white home px-4 py-10'>
+
+    <div className='lg:w-[60%] w-full h-[100vh] overflow-y-scroll overflow-x-hidden bg-[#171029] text-white home px-4 py-10'>
          <YoutubePlayer/>
         <div className="nav h-[7%] bg-[#000] w-full text-white font-bold ">
             <button onClick={()=> {setTopRatedAPI(tvShowsToprated);setTrendingAPI(url_tv);setType('tv')}}>Tv Shows</button>
@@ -20,11 +21,11 @@ function Home() {
             <h6>Trending Movies <i className="fa-solid fa-fire"></i></h6>
             <CarouselC/>
         </div>
-
-        <div className=' mt-4'>
+        <div className='mt-4'>
             <h6>Top Rated <i className="fa-regular fa-star text-yellow-500 "></i></h6>
             <MoviesDisplay/>
         </div>
+        
 
         <div className=' mt-4'>
             <h6>Continue Watching... <i className="fa-regular fa-star text-yellow-500 "></i></h6>
