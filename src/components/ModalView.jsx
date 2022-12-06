@@ -1,6 +1,7 @@
 import React from "react";
 
-export default function ModalView({showModal, setShowModal,closeModal,title,img,overview}) {
+export default function ModalView({showModal, setShowModal,closeModal,title,img,overview,popularity
+  ,original_language}) {
  
   return (
     <>
@@ -21,7 +22,7 @@ export default function ModalView({showModal, setShowModal,closeModal,title,img,
                 {/*body*/}
                 <div className="relative p-6 flex flex-row justify-between">
                     <img src={img} className="w-[200px]" alt="" />
-                    <p className="p-4 ml-2 text-slate-500 text-lg leading-relaxed text-[#171029] font-semibold">
+                    <p className="p-4 ml-2 text-lg leading-relaxed text-[#171029] font-semibold">
                         {overview}
                     </p>
                 </div>

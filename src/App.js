@@ -9,10 +9,12 @@ import RightNav from "./components/RightNav";
 import Signup from "./Pages/Signup";
 import Login from "./Pages/Login";
 import Signout from "./Pages/Signout";
+import Error from "./components/Error";
 
 function App() {
   return (<div className="flex flex-row justify-between h-screen">
     <SideNav/>
+    <Error/>
           <Routes>
             <Route
                 path="/"

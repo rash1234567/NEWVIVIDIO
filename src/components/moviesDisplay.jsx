@@ -1,7 +1,6 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import axios from "axios"
-import React,{useEffect,useState} from 'react';
+import React,{useState} from 'react';
 import TopRated from "../cards/TopRated";
 import { useUserAuth } from '../utilities/UserAuthContextProvider';
 import ModalView from '../components/ModalView';
@@ -62,8 +61,7 @@ function MoviesDisplay() {
         >
         {
             search.map(movies=>{
-                return <TopRated {...movies} key={movies.id}/>
-
+                return <TopRated {...movies} key={movies.id}  showDetails={showDetails}/>
             })
         }
     </Carousel>
