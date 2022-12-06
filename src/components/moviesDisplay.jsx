@@ -1,7 +1,6 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import axios from "axios"
-import React,{useEffect,useState} from 'react';
+import React,{useState} from 'react';
 import TopRated from "../cards/TopRated";
 import { useUserAuth } from '../utilities/UserAuthContextProvider';
 import ModalView from '../components/ModalView';
@@ -33,7 +32,6 @@ function MoviesDisplay() {
     const showDetails = (id) =>{
       let movie = search.find(movie=> movie.id === id );
       setActiveMovie(movie)
-      console.log(activeMovie);
       console.log(movie);
       setShowModal(true)
     }
@@ -62,12 +60,11 @@ function MoviesDisplay() {
         >
         {
             search.map(movies=>{
-                return <TopRated {...movies} key={movies.id}/>
-
+                return <TopRated {...movies} key={movies.id}  showDetails={showDetails}/>
             })
         }
     </Carousel>
-    <ModalView  showModal={showModal} setShowModal={setShowModal} closeModal={closeModal} overview={activeMovie.overview} img={API_IMG+activeMovie.poster_path} title={activeMovie.title}/>
+    <ModalView  showModal={showModal} setShowModal={setShowModal} closeModal={closeModal} overview={activeMovie.overview} img={API_IMG+activeMovie.poster_path} title={activeMovie.title} id={activeMovie.id } name={activeMovie.name}/>
     </>
   )
 }

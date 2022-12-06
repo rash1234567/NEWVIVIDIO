@@ -1,6 +1,8 @@
 import React from "react";
+import { useUserAuth } from '../utilities/UserAuthContextProvider';
 
-export default function ModalView({showModal, setShowModal,closeModal,title,img,overview}) {
+export default function ModalView({showModal, setShowModal,closeModal,title,img,overview,id,name}) {
+  const {findYoutubeId} = useUserAuth();
  
   return (
     <>
@@ -15,24 +17,30 @@ export default function ModalView({showModal, setShowModal,closeModal,title,img,
                 {/*header*/}
                 <div className="flex items-start justify-between p-3 border-b border-solid border-slate-200 rounded-t">
                   <h3 className="text-2xl text-[#171029] font-semibold">
-                   {title}
+                   {title || name}
                   </h3>
                 </div>
                 {/*body*/}
                 <div className="relative p-6 flex flex-row justify-between">
                     <img src={img} className="w-[200px]" alt="" />
-                    <p className="p-4 ml-2 text-slate-500 text-lg leading-relaxed text-[#171029] font-semibold">
+                    { overview.length < 500?
+                      <p className="p-4 ml-2 text-lg leading-relaxed text-[#171029] font-semibold">
                         {overview}
                     </p>
+                    :
+                    <p className="p-4 ml-2 text-sm leading-relaxed text-[#171029] font-semibold">
+                    {overview}
+                </p>
+                    }
                 </div>
                 {/*footer*/}
                 <div className="flex items-center justify-end p-2 border-t border-solid border-slate-200 rounded-b">
                   <button
-                    className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    className=" text-white bg-[#1b1818aa] font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
-                    onClick={() => setShowModal(false)}
+                    onClick={()=>findYoutubeId(id)} 
                   >
-                    Close
+                    Trailer
                   </button>
                   <button
                     className=" text-[#171029] font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
@@ -40,6 +48,13 @@ export default function ModalView({showModal, setShowModal,closeModal,title,img,
                     onClick={closeModal}
                   >
                     Watch List
+                  </button>
+                  <button
+                    className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    type="button"
+                    onClick={() => setShowModal(false)}
+                  >
+                    Close
                   </button>
                 </div>
               </div>
