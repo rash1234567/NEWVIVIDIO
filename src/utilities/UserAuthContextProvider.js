@@ -28,7 +28,9 @@ export function UserAuthContextProvider ({children}){
     const [type,setType] = useState('tv')
     const [isComponentVisible, setIsComponentVisible] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
+    const [errorMessage,setErrorMessage] = useState('')
     const ref = useRef(null);
+   
 
     const handleClickOutside = (event) => {
         if (ref.current && !ref.current.contains(event.target)) {
@@ -44,6 +46,11 @@ export function UserAuthContextProvider ({children}){
     }, []);
 
     const findYoutubeId=(id)=>{
+      if(!user){
+        setErrorMessage('Please Log in to see trailers')
+        setShowAlert(true)
+        return
+      }
       axios.get(`https://api.themoviedb.org/3/${type}/${id}/videos?api_key=0eaae2146624836f2825bc2d4154ad6e&language=en-US`)
       .then(res=>{ 
         if (res.data.results.length > 1) {
@@ -76,6 +83,7 @@ export function UserAuthContextProvider ({children}){
         .then((data)=>{ 
           try {
             if (data.results.length === 0){
+              setErrorMessage('Not found! Try a new keyword')
               return setShowAlert(true)
             }
             setSearch(data.results);
@@ -113,7 +121,7 @@ export function UserAuthContextProvider ({children}){
     
 
     return( 
-    <userAuthContext.Provider value={{user, signUp, logIn, logOut, googleSignIn, handleSubmit, input, search, handleChange,setTopRatedAPI,movieToprated,tvShowsToprated,fetchToprated,topRatedAPI,setTrendingAPI,url_movie,url_tv,movieList,movieId,findYoutubeId,ref, isComponentVisible, setIsComponentVisible,setType,showAlert,setShowAlert, watchList, setWatchList}}>
+    <userAuthContext.Provider value={{user, signUp, logIn, logOut, googleSignIn, handleSubmit, input, search, handleChange,setTopRatedAPI,movieToprated,tvShowsToprated,fetchToprated,topRatedAPI,setTrendingAPI,url_movie,url_tv,movieList,movieId,findYoutubeId,ref, isComponentVisible, setIsComponentVisible,setType,showAlert,setShowAlert, watchList, setWatchList,errorMessage,setErrorMessage}}>
         {children}
     </userAuthContext.Provider>)
 }

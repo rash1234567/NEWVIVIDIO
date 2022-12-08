@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useUserAuth } from '../utilities/UserAuthContextProvider'
+import { useUserAuth } from '../utilities/UserAuthContextProvider';
 
 function SideNav() {
-  const {handleSubmit, input, handleChange} = useUserAuth();
+  const {handleSubmit, input, handleChange,user} = useUserAuth();
 
   return (
     <div className='bg-[#171029] lg:w-[20vw] h-[100vh] lg:flex flex-col px-8 py-2 hidden'>
@@ -23,7 +23,13 @@ function SideNav() {
               <span className='text-[#c9c7c7]'><i className="fa-solid fa-magnifying-glass mr-2"></i>Search</span>
               <input type="search" className='bg-[#171029] border-b-2 border-b-[#ccc] px-2 text-white text-[15px] font-normal focus:outline-none'  value={input} onChange={handleChange}/>
             </form>
-            <Link to='/signout' className='no-underline text-[#c9c7c7]'><i className="fa-solid fa-chevron-left mr-2"></i>sign out</Link>
+            {
+              user?
+              <Link to='/signout' className='no-underline text-[#c9c7c7]'><i className="fa-solid fa-chevron-left mr-2"></i>Sign out</Link>
+              :
+              <Link to='/login' className='no-underline text-[#c9c7c7]'><i className="fa-solid fa-chevron-left mr-2"></i>Sign in</Link>
+            }
+            
           </div>
         </div>
     </div>

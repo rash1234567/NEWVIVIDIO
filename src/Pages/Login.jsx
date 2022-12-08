@@ -38,9 +38,9 @@ function Login() {
 
     return (
       <div className= "w-[60%] h-screen flex items-center" style={{backgroundImage:`url(${backgroundImage})`, backgroundRepeat:'no-repeat', backgroundSize:'cover', backgroundPosition:'center'}}>
-      <div className="formbody w-1/2 mx-auto bg-white">
+      <div className="formbody w-1/2 mx-auto bg-transparent">
           <div className="p-4 box">
-            <h2 className="mb-3">Login</h2>
+            <h2 className="mb-3 text-white">Login</h2>
             {error && <Alert variant = 'danger'>{error}</Alert> }
             <Form onSubmit={handleSubmit} >
               <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -76,8 +76,8 @@ function Login() {
               />
             </div>
           </div>
-          <div className="p-3 box mt-3 text-center">
-            Don't have an account? <Link to="/Signup">Sign up</Link> 
+          <div className="px-4 box mt-3 text-white">
+            Don't have an account? <Link to="/Signup" className=" text-yellow-300" >Sign up</Link> 
           </div>
           </div>
         </div>
