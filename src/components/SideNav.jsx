@@ -4,10 +4,10 @@ import { useUserAuth } from '../utilities/UserAuthContextProvider';
 import './navbarStyle/Navbar.css'
 
 function SideNav() {
-  const {handleSubmit, input, handleChange} = useUserAuth();
+  const {handleSubmit, input, handleChange,user} = useUserAuth();
   const [sidebar, setSidebar] = useState(false);
-
   const showSidebar = () => setSidebar(!sidebar);
+
 
   return (
     <>
@@ -31,7 +31,13 @@ function SideNav() {
               <span className='text-[#c9c7c7]'><i className="fa-solid fa-magnifying-glass mr-2"></i>Search</span>
               <input type="search" className='bg-transparent border-b-2 border-b-[#ccc] px-2 text-white text-[15px] font-normal focus:outline-none'  value={input} onChange={handleChange}/>
             </form>
-            <Link to='/signout' className='no-underline text-[#c9c7c7]'><i className="fa-solid fa-chevron-left mr-2"></i>sign out</Link>
+            {
+              user?
+              <Link to='/signout' className='no-underline text-[#c9c7c7]'><i className="fa-solid fa-chevron-left mr-2"></i>Sign out</Link>
+              :
+              <Link to='/login' className='no-underline text-[#c9c7c7]'><i className="fa-solid fa-chevron-left mr-2"></i>Sign in</Link>
+            }
+            
           </div>
         </div>
     </div>
