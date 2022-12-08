@@ -1,11 +1,22 @@
-import React from 'react'
+import React from 'react';
+import { useUserAuth } from '../utilities/UserAuthContextProvider';
 
-function WatchListItem({poster_path, showDetails, id}) {
+function WatchListItem({poster_path, showDetails, id, title, name}) {
+  const { watchList, setWatchList } = useUserAuth()
+
+    const removeFromWatchList = () => {
+      const items = watchList.filter(items => items.id !== id) 
+      setWatchList(items)
+    }
     const API_IMG = "https://image.tmdb.org/t/p/w500";
   return (
-    <div className='p-5 mx-auto' onClick={()=>showDetails(id)}>
-        <div className='w-[200px] h-[280px]'>
-            <img src={API_IMG+poster_path}className=' w-full h-full rounded-[30px]'/>
+    <div className='mx-auto flex flex-col m-4 pb-2 bg-[#3d3b3baa] w-60 h-80 rounded-3xl'>
+        <div className='w-full h-[70%]'>
+            <img src={API_IMG+poster_path}className='w-full h-full overflow-hidden rounded-t-3xl'/>
+        </div>
+        <div className='text-white text-sm px-1 font-bold mt-3 h-[20%]'>{title || name}</div>
+        <div className='text-white flex flex-col px-4 mt-3'>
+          <button className='self-end' title='remove from watch list' onClick={removeFromWatchList}><i className="fa-solid fa-trash-can self-end"></i></button>
         </div>
     </div>
   )

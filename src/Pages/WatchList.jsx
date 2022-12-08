@@ -1,42 +1,27 @@
 import React from 'react'
 import WatchListItem from '../components/WatchListItem';
-import backgroundImage from '../images/backgroundimage.jpg';
 import { useUserAuth } from '../utilities/UserAuthContextProvider';
-import ModalView from '../components/ModalView';
-import { useState } from 'react';
-import WatchListModalView from '../components/WatchListModal';
+
 
 function WatchList() {
   const API_IMG = "https://image.tmdb.org/t/p/w500";
   const { watchList, setWatchList } = useUserAuth();
 
-  const [showModal, setShowModal] = useState(false);
-  const [activeMovie,setActiveMovie] = useState({});
-
-  const showDetails = (id) =>{
-   let movie = watchList.find(movie=> movie.id === id );
-    setActiveMovie(movie)
-    setShowModal(true);
-    console.log(activeMovie);
-  }
-
-  const closeModal=(id)=>{
-    setShowModal(false);
-    const items = watchList.filter((item)=>{ return item.id !== id})
-    setWatchList(items)
-  }
 
   return (
     <>
-      <div className= "w-[60%] h-screen flex flex-wrap overflow-y-scroll home items-center" style={{backgroundImage:`url(${backgroundImage})`, backgroundRepeat:'no-repeat', backgroundSize:'cover', backgroundPosition:'center'}}>
-        {
-            watchList.map((movie) => {
-              return <WatchListItem key={movie.id} {...movie} showDetails={showDetails}/>
-            })
-        }
+      <div className='w-screen lg:w-[100%] h-screen flex flex-col bg-black'>
+        <h1 className='text-white text-2xl self-center my-10 font-semibold'>WatchList</h1>
+        <hr />
+        <div className= "flex flex-col md:flex-row md:flex-wrap overflow-y-scroll justify-around home items-center">
+          {
+              watchList.map((movie) => {
+                return <WatchListItem key={movie.id} {...movie} />
+              })
+          }
+        </div>
       </div>
-      <WatchListModalView  showModal={showModal} setShowModal={setShowModal} closeModal={closeModal} overview={activeMovie.overview} img={API_IMG+activeMovie.poster_path} title={activeMovie.title} />
-    </>
+  </>
   )
 }
 

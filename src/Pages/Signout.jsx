@@ -18,12 +18,12 @@ function Signout() {
     }
   };
   return (
-    <div className= "w-[60%] h-screen flex items-center" style={{backgroundImage:`url(${backgroundImage})`, backgroundRepeat:'no-repeat', backgroundSize:'cover', backgroundPosition:'center'}}>
-    <div className="formbody w-1/2 mx-auto">
+    <div className= "w-full lg:w-full h-screen flex items-center" style={{backgroundImage:`url(${backgroundImage})`, backgroundRepeat:'no-repeat', backgroundSize:'cover', backgroundPosition:'center'}}>
+    <div className="formbody flex flex-col items-center justify-center lg:w-1/2 mx-auto">
       <div className="p-4 box mt-3 text-center text-white font-bold">
         We hate to see you go
       </div>
-      <div className="p-1 rounded-xl m-3 text-center text-white bg-[#171029] w-3/6 mx-auto " onClick={handleLogout}>
+      <div className="p-1 rounded-xl cursor-pointer text-center text-white bg-[#171029] w-40 mx-auto " onClick={handleLogout}>
         Log out
       </div>
       </div>

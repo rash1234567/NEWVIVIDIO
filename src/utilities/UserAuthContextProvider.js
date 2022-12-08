@@ -9,6 +9,7 @@ import {
 import { createContext,useContext, useState , useEffect, useRef} from "react";
 import { auth } from "./firebaseSetup";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const userAuthContext = createContext();
 const movieToprated = 'https://api.themoviedb.org/3/movie/top_rated?api_key=0eaae2146624836f2825bc2d4154ad6e&language=en-US&page=3';
@@ -29,6 +30,7 @@ export function UserAuthContextProvider ({children}){
     const [isComponentVisible, setIsComponentVisible] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
     const ref = useRef(null);
+  
 
     const handleClickOutside = (event) => {
         if (ref.current && !ref.current.contains(event.target)) {
