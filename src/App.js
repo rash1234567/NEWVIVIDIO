@@ -11,8 +11,9 @@ import Login from "./Pages/Login";
 import Signout from "./Pages/Signout";
 import Error from "./components/Error";
 
+
 function App() {
-  return (<div className="flex flex-col lg:flex-row justify-between min-h-screen">
+  return (<div className="flex bg-black justify-between min-h-screen">
     <SideNav/>
     <Error/>
           <Routes>
@@ -58,7 +59,6 @@ function App() {
                 }
               />
           </Routes>
-          <RightNav/>
     </div>
   );
 }
