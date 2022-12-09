@@ -99,3 +99,12 @@
 span {
   margin-left: 16px;
 }
+
+@media (orientation: landscape) {
+  .carousel {
+    height: 300px;
+  }
+  .nav-menu{
+    height: 100vh;
+  }
+}

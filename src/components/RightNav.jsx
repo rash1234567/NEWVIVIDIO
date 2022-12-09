@@ -1,16 +1,11 @@
 import  axios  from 'axios';
-import React,{useEffect} from 'react'
-import { useState } from 'react'
+import React from 'react'
 import Upcoming from '../cards/Upcoming';
+import { useUserAuth } from '../utilities/UserAuthContextProvider';
 
 
 function RightNav() {
-    const [upcoming,setUpcoming] = useState([])
-
-    useEffect(() => {
-      axios.get('https://api.themoviedb.org/3/discover/movie?api_key=0eaae2146624836f2825bc2d4154ad6e&primary_release_date.gte=2022-12-01&primary_release_date.lte=2023-12-01').then(res=> setUpcoming(res.data.results ))
-    }, [])
-    
+    const {upcoming,setUpcoming} = useUserAuth()
   return(
     <>
     <div className='bg-[#373737] home w-full lg:w-[20vw] h-[100vh] flex flex-col p-2 overflow-y-scroll '>

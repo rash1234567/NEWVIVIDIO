@@ -21,7 +21,7 @@ const YoutubePlayer=()=> {
     //   };
 
     return( 
-        <div className='absolute m-auto z-[1000000] w-[60vw] bottom-28' ref={ref}>
+      <div className='absolute  w-[100vw] m-auto right-0 lg:w-[60vw] lg:left-0 lg:bottom-28 top-28' ref={ref} style={{zIndex: isComponentVisible?'10000000': -100000}}>
         {
             isComponentVisible && <YouTube videoId={movieId} opts={opts}  />
         }

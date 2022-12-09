@@ -29,8 +29,17 @@ export function UserAuthContextProvider ({children}){
     const [type,setType] = useState('tv')
     const [isComponentVisible, setIsComponentVisible] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
-    const [errorMessage,setErrorMessage] = useState('')
+    const [errorMessage,setErrorMessage] = useState('');
+    const [showModal, setShowModal] = useState(false);
+    const [activeMovie,setActiveMovie] = useState({});
+    const [upcoming,setUpcoming] = useState([]);
+    const [heading,setHeading] = useState('Top Rated')
     const ref = useRef(null);
+
+    useEffect(() => {
+      axios.get('https://api.themoviedb.org/3/discover/movie?api_key=0eaae2146624836f2825bc2d4154ad6e&primary_release_date.gte=2022-12-10&primary_release_date.lte=2023-12-10').then(res=> setUpcoming(res.data.results ))
+    }, [])
+
 
     const handleClickOutside = (event) => {
         if (ref.current && !ref.current.contains(event.target)) {
@@ -88,12 +97,35 @@ export function UserAuthContextProvider ({children}){
             }
             setSearch(data.results);
           } catch (error) {
-            
+            setErrorMessage(error)
+            setShowAlert(true)
           }   
         setType('movie')})
         };
+        setHeading('Search Result...')
         fetchData();
      };
+
+     const closeModal=()=>{
+      setShowModal(false); 
+      if(watchList.includes(activeMovie)){
+        return
+      }
+      {
+        setWatchList(prev => [...prev, activeMovie]);
+        console.log(watchList)
+      }
+    }
+
+    const showDetails = (id) =>{
+      let movie = search.find(movie=> movie.id === id );
+      if(!movie){
+        movie = upcoming.find(movie=> movie.id === id );
+        setType('movie')
+      }
+      setActiveMovie(movie)
+      setShowModal(true)
+    }
 
 
     function signUp(email,password){
@@ -121,7 +153,7 @@ export function UserAuthContextProvider ({children}){
     
 
     return( 
-    <userAuthContext.Provider value={{user, signUp, logIn, logOut, googleSignIn, handleSubmit, input, search, handleChange,setTopRatedAPI,movieToprated,tvShowsToprated,fetchToprated,topRatedAPI,setTrendingAPI,url_movie,url_tv,movieList,movieId,findYoutubeId,ref, isComponentVisible, setIsComponentVisible,setType,showAlert,setShowAlert, watchList, setWatchList,errorMessage,setErrorMessage}}>
+    <userAuthContext.Provider value={{user, signUp, logIn, logOut, googleSignIn, handleSubmit, input, search, handleChange,setTopRatedAPI,movieToprated,tvShowsToprated,fetchToprated,topRatedAPI,setTrendingAPI,url_movie,url_tv,movieList,movieId,findYoutubeId,ref, isComponentVisible, setIsComponentVisible,setType,showAlert,setShowAlert, watchList, setWatchList,errorMessage,setErrorMessage,showModal,setShowModal,closeModal,showDetails,activeMovie,setActiveMovie,upcoming,setUpcoming,heading,setHeading}}>
         {children}
     </userAuthContext.Provider>)
 }

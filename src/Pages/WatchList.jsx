@@ -10,17 +10,20 @@ function WatchList() {
 
   return (
     <>
-      <div className='w-screen lg:w-[100%] h-screen flex flex-col bg-black'>
+      <div className='w-screen lg:w-[100%] lg:ml-[20vw] h-screen flex flex-col bg-black'>
         <h1 className='text-white text-2xl self-center my-10 font-semibold'>WatchList</h1>
-        <hr />
-        <div className= "flex flex-col md:flex-row md:flex-wrap overflow-y-scroll justify-around home items-center">
+       { watchList.length < 1 
+          ?
+        <p className='italic text-white mx-auto self-center'>You have not added any movie...</p>
+          :
+        <div className= "flex flex-col md:flex-row md:flex-wrap overflow-y-scroll home items-center lg:items-start ">
           {
               watchList.map((movie) => {
                 return <WatchListItem key={movie.id} {...movie} />
               })
           }
-        </div>
-      </div>
+        </div>}
+      </div>   
   </>
   )
 }

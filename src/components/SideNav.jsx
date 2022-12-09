@@ -27,9 +27,9 @@ function SideNav() {
             <Link to='/' className='no-underline text-[#c9c7c7]'><i className="fa-solid fa-house mr-2"></i>Home</Link>
             <Link to='/profile' className='no-underline text-[#c9c7c7]'><i className="fa-solid fa-user mr-2"></i>Profile</Link>
             <Link to='/watchlist' className='no-underline text-[#c9c7c7]'><i className="fa-regular fa-eye mr-2"></i>Watch List</Link>
-            <form className='flex flex-col' onSubmit={handleSubmit}>
-              <span className='text-[#c9c7c7]'><i className="fa-solid fa-magnifying-glass mr-2"></i>Search</span>
-              <input type="search" className='bg-transparent border-b-2 border-b-[#ccc] px-2 text-white text-[15px] font-normal focus:outline-none'  value={input} onChange={handleChange}/>
+            <form className='flex flex-col p-0' onSubmit={handleSubmit}>
+              <p className='text-[#c9c7c7]'><i className="fa-solid fa-magnifying-glass mr-2 ml-0"></i>Search</p>
+              <input type="search" className='bg-transparent border-b-2 border-b-[#ccc] px-1 text-white text-[15px] font-normal focus:outline-none'  value={input} onChange={handleChange}/>
             </form>
             {
               user?
