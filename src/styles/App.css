@@ -44,7 +44,7 @@
 
   .comingSoon::before{
     background-color: black;
-    animation: type 4s steps(14) forwards;
+    animation: type 4s steps(14) forwards infinite;
   }
 
 
