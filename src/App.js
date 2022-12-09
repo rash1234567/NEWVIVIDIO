@@ -2,14 +2,13 @@ import React from "react";
 import "./styles/App.css"
 import {Routes, Route} from 'react-router-dom';
 import Home from './Pages/Home';
-import Profile from './Pages/Profile';
 import WatchList from './Pages/WatchList';
 import SideNav from "./components/SideNav";
-import RightNav from "./components/RightNav";
 import Signup from "./Pages/Signup";
 import Login from "./Pages/Login";
 import Signout from "./Pages/Signout";
 import Error from "./components/Error";
+import Community from "./Pages/Community";
 
 
 function App() {
@@ -31,9 +30,9 @@ function App() {
                 }
               />
               <Route
-                path="/profile"
+                path="/community"
                 element={
-                    <Profile />
+                    <Community />
        
                 }
               />
