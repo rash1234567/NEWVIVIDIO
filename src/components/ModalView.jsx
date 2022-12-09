@@ -8,9 +8,9 @@ export default function ModalView({showModal, setShowModal,closeModal,title,img,
       {showModal ? (
         <>
           <div
-            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-[1000] outline-none focus:outline-none"
+            className="justify-center sm:h-[90%] md:w-4/5 mx-auto items-center flex overflow-scroll overflow-y-auto fixed inset-0 z-[1000] outline-none focus:outline-none"
           >
-            <div className="relative w-auto my-6 mx-auto max-w-3xl">
+            <div className="relative lg:w-auto my-6 mx-auto max-w-3xl">
               {/*content*/}
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*header*/}
@@ -20,14 +20,14 @@ export default function ModalView({showModal, setShowModal,closeModal,title,img,
                   </h3>
                 </div>
                 {/*body*/}
-                <div className="relative p-6 flex flex-row justify-between">
-                    <img src={img} className="w-[200px]" alt="" />
+                <div className="relative md:p-6 flex flex-col md:flex-row justify-between">
+                    <img src={img} className="md:w-[200px] w-full h-64 " alt="" />
                     { overview.length < 500?
-                      <p className="p-4 ml-2 text-lg leading-relaxed text-[#171029] font-semibold">
+                      <p className=" p-2 md:p-4 ml-2 text-lg leading-relaxed text-[#171029] font-semibold">
                         {overview}
                     </p>
                     :
-                    <p className="p-4 ml-2 text-sm leading-relaxed text-[#171029] font-semibold">
+                    <p className="p-2 md:p-4 ml-2 text-sm leading-relaxed text-[#171029] font-semibold">
                     {overview}
                 </p>
                     }

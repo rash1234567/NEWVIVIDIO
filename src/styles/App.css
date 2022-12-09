@@ -27,5 +27,31 @@
     font-family: 'Space Grotesk', sans-serif;
   }
 
+  .comingSoon{
+      position: relative;
+      width: max-content;
+  }
+
+  .comingSoon::before,
+  .comingSoon::after {
+    content: '';
+    top: 0;
+    right: 0;
+    bottom: -5px;
+    left: 0;
+    position: absolute;
+  }
+
+  .comingSoon::before{
+    background-color: black;
+    animation: type 4s steps(14) forwards;
+  }
+
+
+  @keyframes type {
+   to {
+    left: 100%;
+   }
+  }
 
  

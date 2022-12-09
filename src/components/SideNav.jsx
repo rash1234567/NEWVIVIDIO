@@ -25,7 +25,7 @@ function SideNav() {
           <h1 className='text-[#b9b8b8] text-[20px] mt-4 '>MENU</h1>
           <div className='p-0 mt-3 text-lg font-semibold flex flex-col text-[15px] justify-around h-[60%]' onClick={showSidebar}>
             <Link to='/' className='no-underline text-[#c9c7c7]'><i className="fa-solid fa-house mr-2"></i>Home</Link>
-            <Link to='/profile' className='no-underline text-[#c9c7c7]'><i className="fa-solid fa-user mr-2"></i>Profile</Link>
+            <Link to='/community' className='no-underline text-[#c9c7c7]'><i className="fa-solid fa-user mr-2"></i>Community</Link>
             <Link to='/watchlist' className='no-underline text-[#c9c7c7]'><i className="fa-regular fa-eye mr-2"></i>Watch List</Link>
             <form className='flex flex-col p-0' onSubmit={handleSubmit}>
               <p className='text-[#c9c7c7]'><i className="fa-solid fa-magnifying-glass mr-2 ml-0"></i>Search</p>
