@@ -19,7 +19,7 @@ function CarouselCard({title, overview, poster_path, backdrop_path,name,id}) {
   }
 
   return (
-    <div className='carousel w-full lg:w-[90%] md:h-[30vh] lg:h-[50vh] h-[25vh] p-4 md:p-12 flex justify-around mt-2 rounded-[30px]' style={{backgroundImage: `url(${API_IMG+backdrop_path})`}}>
+    <div className='carousel w-full lg:w-[100%] md:h-[30vh] lg:h-[50vh] h-[25vh] p-4 md:p-12 flex justify-around mt-2 rounded-[30px] mx-auto' style={{backgroundImage: `url(${API_IMG+backdrop_path})`}}>
         <div className='carouselItem flex w-full h-full'>
           <div className='w-[30%] lg:w-[30%] md:w-[20%] h-full'>
               <img src={API_IMG+poster_path} className='w-full h-full rounded-xl md:rounded-[30px]'/>

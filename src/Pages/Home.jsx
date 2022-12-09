@@ -5,9 +5,9 @@ import { useUserAuth } from '../utilities/UserAuthContextProvider';
 import YoutubePlayer from '../components/YoutubePlayer';
 import RightNav from '../components/RightNav';
 
-
 function Home() {
    const {setTopRatedAPI,movieToprated,tvShowsToprated,url_movie,url_tv,setTrendingAPI,setType} = useUserAuth();
+   
 
   return (
     <div className='flex w-[100vw] z-0 lg:ml-[20vw] lg:w-[80vw] overflow-hidden flex-col lg:flex-row'>

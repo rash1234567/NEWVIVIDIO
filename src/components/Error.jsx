@@ -2,7 +2,7 @@ import React from "react";
 import { useUserAuth } from "../utilities/UserAuthContextProvider";
 
 export default function Alert() {
-  const {showAlert, setShowAlert} = useUserAuth()
+  const {showAlert, setShowAlert,errorMessage} = useUserAuth()
   return (
     <>
       {showAlert ? (
@@ -17,7 +17,7 @@ export default function Alert() {
                 {/*body*/}
                 <div className="relative flex flex-row px-2">
                   <p className="my-4 text-white text-lg pl-4 leading-relaxed">
-                    No movies found!
+                   {errorMessage}
                   </p>
                   <button
                     className="text-red-500 background-transparent font-bold uppercase px-6 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
