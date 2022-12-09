@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React from 'react';
 
 
 const API_IMG = "https://image.tmdb.org/t/p/w500";

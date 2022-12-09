@@ -26,30 +26,8 @@ const responsive = {
   };
   const API_IMG = "https://image.tmdb.org/t/p/w500";
 function MoviesDisplay() {
-    const {search} = useUserAuth();
-    const [showModal, setShowModal] = useState(false);
-    const [activeMovie,setActiveMovie] = useState({});
-    const {watchList, setWatchList} = useUserAuth();
-    const navigate = useNavigate()
-    let movie
-
-    const showDetails = (id) =>{
-      movie = search.find(movie=> movie.id === id );
-      setActiveMovie(movie)
-      console.log(movie);
-      setShowModal(true)
-    }
-
-    const closeModal=()=>{
-      setShowModal(false); 
-      if(watchList.includes(activeMovie)){
-        return
-      }
-      {
-        setWatchList(prev => [...prev, activeMovie]);
-        console.log(watchList)
-      }
-    }
+    const {search} = useUserAuth(); 
+    const {showModal, setShowModal,showDetails,activeMovie,closeModal} = useUserAuth();
 
   return (
     <>
