@@ -5,7 +5,6 @@ import Alert from 'react-bootstrap/Alert';
 import { Link,useNavigate } from 'react-router-dom';
 import { useUserAuth } from '../utilities/UserAuthContextProvider';
 import { useState } from 'react';
-import GoogleButton from "react-google-button";
 import backgroundImage from '../images/backgroundimage.jpg'
 
 function Login() {
@@ -68,15 +67,9 @@ function Login() {
               </div>
             </Form>
             <hr />
-            <div>
-              <GoogleButton
-                className="g-btn w-100"
-                type="dark"
-                onClick={handleGoogleSignIn}
-              />
-            </div>
+            
           </div>
-          <div className="px-4 box mt-3 text-white">
+          <div className="px-4 text-white">
             Don't have an account? <Link to="/Signup" className=" text-yellow-300" >Sign up</Link> 
           </div>
           </div>
