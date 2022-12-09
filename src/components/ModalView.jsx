@@ -8,7 +8,7 @@ export default function ModalView({showModal, setShowModal,closeModal,title,img,
       {showModal ? (
         <>
           <div
-            className="justify-center sm:h-[90%] md:w-4/5 mx-auto items-center flex overflow-scroll overflow-y-auto fixed inset-0 z-[1000] outline-none focus:outline-none"
+            className="justify-center sm:h-[90%] md:w-4/5 mx-auto items-center flex fixed inset-0 z-[1000] outline-none focus:outline-none"
           >
             <div className="relative lg:w-auto my-6 mx-auto max-w-3xl">
               {/*content*/}
