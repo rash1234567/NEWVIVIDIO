@@ -8,7 +8,7 @@ export default function ModalView({showModal, setShowModal,closeModal,title,img,
       {showModal ? (
         <>
           <div
-            className="justify-center sm:h-[90%] md:w-4/5 mx-auto items-center flex fixed inset-0 z-[1000] outline-none focus:outline-none"
+            className="justify-center h-[65%] lg:h-[90%] md:w-4/5 mx-auto items-center flex fixed inset-0 z-[1000] outline-none focus:outline-none mt-14 md:mt-20 lg:mt-0"
           >
             <div className="relative lg:w-auto my-6 mx-auto max-w-3xl">
               {/*content*/}
@@ -21,9 +21,9 @@ export default function ModalView({showModal, setShowModal,closeModal,title,img,
                 </div>
                 {/*body*/}
                 <div className="relative md:p-6 flex flex-col md:flex-row justify-between">
-                    <img src={img} className="md:w-[200px] w-full h-64 " alt="" />
+                    <img src={img} className="md:w-[200px] w-full " alt="" />
                     { overview.length < 500?
-                      <p className=" p-2 md:p-4 ml-2 text-lg leading-relaxed text-[#171029] font-semibold">
+                      <p className=" p-2 md:p-4 ml-2 text-sm md:text-lg leading-relaxed text-[#171029] font-semibold">
                         {overview}
                     </p>
                     :
